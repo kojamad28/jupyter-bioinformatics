@@ -6,8 +6,8 @@ RUN apt-get update && apt-get install -y build-essential gcc && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ${ENV_YML} ./
 ARG ENV_YML
+COPY ${ENV_YML} ./
 RUN conda update -y -c conda-forge conda && \
     conda env create --file ${ENV_YML}  && \
     conda clean -i -t -y
