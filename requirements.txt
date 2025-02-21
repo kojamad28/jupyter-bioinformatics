@@ -12,8 +12,9 @@ numpy
 scipy
 statsmodels
 openpyxl
-pandas
+pandas[performance]
 polars
+ibis-framework[pandas, polars]
 matplotlib
 seaborn
 fastcluster
