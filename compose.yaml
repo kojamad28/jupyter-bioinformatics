@@ -9,7 +9,7 @@ services:
         REQ_TXT: "requirements.txt"
     image: kojamad28/jupyter-bioinformatics
     container_name: jupyterlab
-    command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''
+    command: mamba run --name bioinfo jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''
     ports:
      - "8888:8888"
     volumes:

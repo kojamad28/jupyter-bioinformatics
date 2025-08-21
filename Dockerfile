@@ -8,18 +8,13 @@ RUN apt-get update && apt-get install -y build-essential gcc && \
 
 ARG ENV_YML
 COPY ${ENV_YML} ./
-RUN conda update -y -c conda-forge conda && \
-    conda env create --file ${ENV_YML}  && \
-    conda clean -i -t -y
+RUN mamba update -y -c conda-forge conda && \
+    mamba env create --file ${ENV_YML}  && \
+    mamba clean -i -t -y
 
 ARG DIR_CONDA
 ARG VENV
-ENV PATH ${DIR_CONDA}/envs/${VENV}/bin:$PATH
-SHELL ["conda", "run", "--name", "bioinfo", "/bin/bash", "-c"]
-
 ARG REQ_TXT
 COPY ${REQ_TXT} ./
-RUN pip install --upgrade pip setuptools wheel&& \
-    pip install --no-cache-dir -r ${REQ_TXT}
-
-COPY . .
+RUN mamba run --name ${VENV} pip install --upgrade pip setuptools wheel&& \
+    mamba run --name ${VENV} pip install --no-cache-dir -r ${REQ_TXT}
