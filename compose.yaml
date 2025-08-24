@@ -5,7 +5,6 @@ services:
       args:
         ENV_YML: "environment.yaml"
         VENV: "bioinfo"
-        DIR_CONDA: "/opt/conda"
         REQ_TXT: "requirements.txt"
     image: kojamad28/jupyter-bioinformatics
     container_name: jupyterlab
